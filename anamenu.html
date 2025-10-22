@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #27374d;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .buton-kapsayici {
+            margin-top: 30px;
+        }
+        button {
+            padding: 15px 30px;
+            margin: 0 10px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        #buton1 {
+            background-color: #4CAF50; /* Yeşil */
+        }
+        #buton1:hover {
+            background-color: #45a049;
+        }
+        #buton2 {
+            background-color: #008CBA; /* Mavi */
+        }
+        #buton2:hover {
+            background-color: #007bb5;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #DDE6ED;">KELİME BİLMECE OYUNUNA HOŞ GELDİNİZ</h1><br>
+
+    <h2 style="color: #DDE6ED;">NASIL OYNAMAK İSTERSİNİZ ?</h2><br>
+
+    <div class="buton-kapsayici">
+        <button id="buton1">
+            <a href="botakarsi.html" style="text-decoration: none; color: #DDE6ED;">Bot'a Karşı Oyna</a>
+        </button>
+        
+        <button id="buton2">
+            <a href="2kisi.html" style="text-decoration: none; color: #DDE6ED;">2 Kişilik Oyna</a>
+        </button>
+    </div>
+</body>
+</html>

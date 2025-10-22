@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İsim Bilmece</title>
+    <link rel="stylesheet" href="menu.css">
+    <script>
+     document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Gerekli HTML öğelerini ID'lerine göre alıyoruz
+    const inputAlan = document.getElementById('inputTakimAdi');
+    const buton = document.getElementById('ayarlaButonu');
+    const baslik = document.getElementById('oyunBasligi');
+    const grupKapsayici = document.getElementById('grup-kapsayici'); // Gizleyeceğimiz div
+    
+    // Güvenlik kontrolü: Buton varsa olay dinleyicisini ekle
+    if (buton && inputAlan && baslik && grupKapsayici) {
+        
+        buton.addEventListener('click', () => {
+            
+            const girilenAd = inputAlan.value.trim(); // Giriş değerini al ve boşlukları temizle
+
+            // 2. Kontrol: Boş giriş yapılmışsa uyarı ver
+            if (girilenAd === "") {
+                alert("Lütfen geçerli bir takım adı giriniz.");
+                return; // Fonksiyondan çık
+            }
+
+            // 3. Başlık Metnini Güncelleme
+            // Kullanıcının girdiği ad ile başlığı değiştiriyoruz
+            baslik.innerText = ` ${girilenAd} `;
+            
+            // 4. GİZLEME İŞLEMİ ve Sabitleme
+            // Kapsayıcı div'i CSS ile gizleyerek girişi ve butonu kaldırıyoruz
+            grupKapsayici.style.display = 'none'; 
+            
+            // Konsolda işlemi onaylama (geliştirici konsolunda kontrol için)
+            console.log(`Takım adı ayarlandı ve giriş arayüzü gizlendi: ${girilenAd}`);
+        });
+        
+    } else {
+        // Bir hata oluşursa, hangi elementin bulunamadığını konsola yazdır
+        console.error("Hata: Gerekli HTML elementlerinden biri/birkaçı bulunamadı. Lütfen ID'leri kontrol edin.");
+    }
+});
+    </script>
+    <style>
+#oyunBasligi {
+    color: #DDE6ED;
+    margin-bottom: 30px;
+    font-size: 35px;
+}
+#grup-kapsayici {
+    margin-top: -15px;
+    padding: 20px;
+    display: inline-block; /* Kapsayıcının içeriği kadar yer kaplamasını sağlar */
+}
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 200px;
+    margin-right: 10px;
+}
+#ayarlaButonu{
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+#ayarlaButonu:hover {
+    background-color: #2980b9;
+}
+    </style>
+</head>
+<body>
+    <div class="anakart">
+    <div class="kart1">
+        <h1 id="oyunBasligi">Takım Adı</h1><hr>
+
+        <div id="grup-kapsayici">
+            <h2>Takım 1 Adı Bekleniyor</h2>
+            <input type="text" id="inputTakimAdi" placeholder="Takım 1 Adı Girin"><br><br>
+            <buton id="ayarlaButonu">Onayla</button>
+        </div>
+    </div>
+    <div class="kart">
+
+    </div>
+    <div class="kart1">
+        <h1 id="oyunBasligi">Bot</h1><hr>
+
+    </div>
+    </div>
+</body>
+</html>

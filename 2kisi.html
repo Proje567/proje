@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İsim Bilmece</title>
+    <link rel="stylesheet" href="menu.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+    window.takimAdiniAyarla = function(inputId, baslikId, grupId) {
+        
+        // 1. Gerekli elementleri ID'ler aracılığıyla alıyoruz
+        const inputAlan = document.getElementById(inputId);
+        const baslikElementi = document.getElementById(baslikId);
+        const grupKapsayici = document.getElementById(grupId);
+        
+        // Güvenlik kontrolü
+        if (!inputAlan || !baslikElementi || !grupKapsayici) {
+            console.error("HATA: Gerekli elementlerden biri bulunamadı. ID'leri kontrol edin.");
+            // Hata ayıklama: Hangi elementin null olduğunu kontrol et
+            console.log(`Input: ${inputAlan}, Başlık: ${baslikElementi}, Grup: ${grupKapsayici}`);
+            return;
+        }
+
+        // 2. Değeri Al ve Kontrol Et
+        const girilenAd = inputAlan.value.trim();
+
+        if (!girilenAd) {
+            alert("Lütfen bir takım adı giriniz.");
+            console.log("Kullanıcı boş giriş yaptı.");
+            return;
+        }
+
+        // *** HATA AYIKLAMA KONTROL NOKTASI ***
+        console.log("------------------------------------------");
+        console.log("Buton tıklandı, tüm elementler bulundu.");
+        console.log(`Girilen isim: "${girilenAd}"`);
+        console.log(`Hedef Başlık ID'si: ${baslikId}`);
+        // ***************************************
+
+        // 3. Kendi Başlığını Güncelleme
+        // Bu satırın içeriği değiştirmesi gerekiyor:
+        baslikElementi.innerText = `${girilenAd}`;
+        
+        // 4. Grubu Gizleme (Sabitleme)
+        grupKapsayici.style.display = 'none';
+
+        console.log("Başlık içeriği güncellendi ve grup gizlendi.");
+        console.log("------------------------------------------");
+    };
+});
+    </script>
+    <style>
+       .kapsayici {
+            display: flex;
+            justify-content: space-around;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+        .takim-grup {
+            margin-top: -40px;
+            padding: 20px;
+            width: 75%; 
+        }
+        .takim-grup h2 {
+            min-height: 24px; /* Başlık boşken kaymayı engeller */
+        }
+        
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            width: 80%;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="anakart">
+    <div class="kart1">
+        <h2 id="takim1Baslik" style="font-size: 30px;">Takım Adı </h2>
+    <hr>
+    
+    <div class="kapsayici">
+        
+        <div id="grup-takim1" class="takim-grup">
+            <h2 id="takim1Baslik">Takım 1 Adı Bekleniyor</h2>
+            <input type="text" id="inputTakim1Adi" placeholder="Takım 1 Adı Girin">
+            <button onclick="takimAdiniAyarla('inputTakim1Adi', 'takim1Baslik', 'grup-takim1')">Onayla</button>
+        </div>
+    </div>
+    </div>
+    <div class="kart">
+
+    </div>
+
+    <div class="kart1">
+        <h2 id="takim2Baslik" style="font-size: 30px;">Takım Adı</h2>
+    <hr>
+    
+    <div class="kapsayici">
+
+        <div id="grup-takim2" class="takim-grup">
+            <h2 id="takim2Baslik">Takım 2 Adı Bekleniyor</h2>
+            <input type="text" id="inputTakim2Adi" placeholder="Takım 2 Adı Girin">
+            <button onclick="takimAdiniAyarla('inputTakim2Adi', 'takim2Baslik', 'grup-takim2')">Onayla</button>
+        </div>
+
+    </div>
+    </div>
+    </div>
+</body>
+</html>
